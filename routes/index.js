@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var stripe = require("stripe")("sk_test_CYvqefVy8xAD0HkSxGjXab5v");
+var stripe = require("stripe")("KEY");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
                     {name: "Model AMIG39", url:"/images/bike-6.jpg", price: 599}
 
 ];
+
 
 if (req.session.dataCardBike==undefined){
   req.session.dataCardBike=[];
@@ -39,7 +40,6 @@ router.post('/update-card', function(req, res, next) {
 
 
 router.get('/delete-card', function(req, res, next) {
-  console.log(req.body);
   req.session.dataCardBike.splice(req.query.position, 1);
   res.render('card', { dataCardBike:  req.session.dataCardBike});
 })
