@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
 var stripe = require("stripe")("KEY");
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   var dataBike = [
                     {name: "Model BIKO45", url:"/images/bike-1.jpg", price: 679},
